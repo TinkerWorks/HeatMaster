@@ -17,3 +17,8 @@ class Controller:
         for relay in self.relays:
             GPIO.setup(relay, GPIO.OUT)
             GPIO.output(relay, 0)
+
+    def turn_off_relay( relay_name ):
+        pin = relays.room_to_relay_board ( relay_name )
+        GPIO.setup(pin, GPIO.OUT)
+        GPIO.output(pin, 0)

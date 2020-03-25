@@ -11,8 +11,11 @@ def main():
     li = Initialiser()
     lc = Controller(li.relays)
 
+    GPIO.setwarnings(False)
+
     #switch
     GPIO.setup(31, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+
     #RELAY
     GPIO.setup(29, GPIO.OUT)
 
@@ -20,10 +23,11 @@ def main():
 
         print ("Switch is ", GPIO.input(31))
 
-        if GPIO.input(31):
+        if True:
             lc.turn_it_all_up()
             GPIO.output(29, 1)
         else:
+            print( "Turn it all OFF !!! \n")
             lc.turn_it_all_down()
             GPIO.output(29, 0)
 
@@ -31,7 +35,9 @@ def main():
 
     while(True):
         handle_switch(0);
-        time.sleep(1)
+
+
+        time.sleep(10)
 
 
 if __name__ == "__main__":

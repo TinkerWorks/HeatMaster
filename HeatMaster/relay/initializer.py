@@ -4,23 +4,30 @@ class Initialiser:
         self.relays = self.relays()
         self.board_to_room = self.board_to_room()
         self.board_to_bcm = self.board_to_bcm()
+        self.board_to_room = {
+            15: "small bathroom",
+            11: "bathroom",
+            13: "office",
+            12: "livingroom",
+            16: "bedroom",
+            18: "kitchen",
+            22: "no mans land"
+        }
 
     @staticmethod
     def relays():
         return [11, 13, 15, 12, 16, 18, 22]
 
-    @staticmethod
-    def board_to_room():
-        board_to_room = {
-            11: "kitchen",
-            13: "no_mans_land",
-            15: "bedroom",
-            12: "office",
-            16: "living",
-            18: "bathroom_main",
-            20: "bathroom_tiny"
-        }
-        return board_to_room
+
+    def board_to_room(self):
+        return self.board_to_room
+
+    def room_to_relay_board( room_name ):
+        for relay , room in self.board_to_room:
+            if (room == room_name):
+                return relay
+        raise ValueError('Room name unknown')
+
 
     @staticmethod
     def board_to_bcm():
