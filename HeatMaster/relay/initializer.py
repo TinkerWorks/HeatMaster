@@ -1,5 +1,10 @@
 class Initialiser:
 
+
+    # 7 minutes to close valve (safer would be 6:30 )
+    # 1 minute to open valve ( 1:30 is opened fully )
+
+
     def __init__(self):
         self.relays = self.relays()
         self.board_to_room = self.board_to_room()
