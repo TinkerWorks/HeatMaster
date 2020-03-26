@@ -4,47 +4,35 @@ import RPi.GPIO as GPIO
 from relay.initializer import Initialiser
 from relay.controller import Controller
 
-GPIO.setmode(GPIO.BOARD)
+from switch.switch import Switch
+from relay.relay import Relay
 
+from temperature.temperature import MqttTemperature
+
+from
 
 def main():
     li = Initialiser()
     lc = Controller(li.relays)
 
-    GPIO.setwarnings(False)
 
-    #switch
-    GPIO.setup(31, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+    sw = Switch(31, 29)
+    rls = []
 
-    #RELAY
-    GPIO.setup(29, GPIO.OUT)
+    mqtemp = MqttTemperature("raspberry-sensor-dev/temperature/current")
 
-    def handle_switch(pin):
+    for rpin in li.relays:
+        print("Setting up relay %d" % rpin)
+        rl = Relay(rpin)
+        rls.append(rl)
 
-        switch = GPIO.input(31)
-
-        print ("Switch is ", switch)
-
-        relay = 13
-
-        if switch:
-            GPIO.output(29, 1)
-
-        else:
-            GPIO.output(29, 0)
-
-
-
-    GPIO.add_event_detect(31, GPIO.BOTH, handle_switch)
-
-    print( "Turn it all ON !!! \n")
-    lc.turn_it_all_up()
 
     while(True):
-        handle_switch(0);
+        print( "Turn it all ON !!! \n")
+        for relay in rls:
+            relay.on()
 
-        time.sleep(10)
-
+        time.sleep(1)
 
 if __name__ == "__main__":
     main()
