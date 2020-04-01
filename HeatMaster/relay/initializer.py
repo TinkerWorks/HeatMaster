@@ -19,6 +19,16 @@ class Initialiser:
             22: "no mans land"
         }
 
+        self.room_to_relay = {
+            15: "small bathroom",
+            11: "bathroom",
+            13: "office",
+            12: "livingroom",
+            16: "bedroom",
+            18: "kitchen",
+            22: "no mans land"
+        }
+
     @staticmethod
     def relays():
         return [11, 13, 15, 12, 16, 18, 22]

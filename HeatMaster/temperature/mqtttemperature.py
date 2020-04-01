@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-from temperature import Temperature
+from temperature.temperature import Temperature
 import datetime;
 
 class MqttSingleton(type):
@@ -9,8 +9,8 @@ class MqttSingleton(type):
             cls._instances[cls] = super(MqttSingleton, cls).__call__(*args, **kwargs)
         return cls._instances[cls]
 
-
 class MqttProxy(metaclass=MqttSingleton):
+
     def onConnect(self, client, userdata, flags, rc):
         # Subscribing in onConnectDispatcher() means that if we lose the connection and
         # reconnect then subscriptions will be renewed.
@@ -23,16 +23,44 @@ class MqttProxy(metaclass=MqttSingleton):
         #print("will call function ", handler)
         handler(msg.payload)
 
-    def __init__(self, address, port):
+    def __init__(self):
+        self.classFinder = {"host": self.setHost, "port" : self.setPort}
         self.topicAndHandler = {}
         self.client = mqtt.Client()
         self.client.on_connect = self.onConnect
         self.client.on_message = self.onMessage
 
-        print("Connect to ", address, ":", port)
 
-        self.client.connect_async(address, port, 60)
+    def setHost(self, host):
+        self.host_ = host
+
+    def setPort(self, port):
+        self.port_ = int(port)
+
+    def loadConfig(self, config):
+        print(config)
+
+        for k, v in config.items():
+            print (" Key: ", k, " : ", v)
+            keyClass = self.classFinder[k]
+            print (keyClass)
+
+            o = keyClass(v)
+
+        self.connect()
+
+    def connect(self, host = "", port = 0):
+        if(host is not ""):
+            self.host_ = host
+        if(port is not 0):
+            self.port_ = port
+
+        print("Connect to ", self.host_, ":", self.port_)
+
+        self.client.connect_async(self.host_, self.port_, 60)
         self.client.loop_start()
+
+        print("MQTT broker proxy started")
 
     def subscribeToTopic(self, topic, handler):
         #print("subscribe ", self, " to topic ", topic, " with handler ", handler)
@@ -45,14 +73,35 @@ class MqttProxy(metaclass=MqttSingleton):
 
 
 class MqttTemperature(Temperature):
-    def __init__(self, address, port, topic, updateFunc = None):
+    def __init__(self, topic = None, updateFunc = None):
         self.topic_ = topic
-        self.mqtt_ = MqttProxy(address, port)
+        self.mqtt_ = MqttProxy()
         self.temperature_ = float('nan')
         self.updateFunc_ = updateFunc
 
+        if(self.topic_ is not None):
+            self.subscribe()
+
+    def subscribe(self):
         self.mqtt_.subscribeToTopic(self.topic_, self.updateTemperature)
         print("will sign function ", self.updateTemperature)
+
+    def setTopic(self, topic):
+        self.topic_ = topic
+        self.subscribe()
+
+    def loadConfig(self, config):
+        print(config)
+
+        classFinder = {"topic": self.setTopic}
+
+        for k,v in config.items():
+            print (" Key: ", k, " v ", v)
+            keyClass = classFinder[k]
+            print (keyClass)
+
+            o = keyClass(v)
+            #.loadConfig(v)
 
 
     def updateTemperature(self, temp):
@@ -71,14 +120,16 @@ class MqttTemperature(Temperature):
 
 
 if __name__ == "__main__":
-    address = "mqtt.tinker.haus"
+    host = "mqtt.tinker.haus"
     port = 1883
 
     def updatefunc():
         print ("needchangenow !!\n")
 
-    m1 = MqttTemperature(address, port, "raspberry-sensor-dev/temperature/current", updateFunc = updatefunc)
-    m2 = MqttTemperature(address, port, "raspberry-sensor-dev/humidity/current", updateFunc = updatefunc)
+    mqttBroker = MqttProxy(host, port)
+
+    m1 = MqttTemperature("raspberry-sensor-dev/temperature/current", updateFunc = updatefunc)
+    m2 = MqttTemperature("raspberry-sensor-dev/humidity/current", updateFunc = updatefunc)
 
 
     while True:
