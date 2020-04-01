@@ -4,16 +4,13 @@
         "port": "1883"
     },
     "thermostates": [
-        { "name": "small bathroom", "relay": "15", "temperature": [
-	    {"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}
-	]
-	},
-        { "name": "bathroom",       "relay": "11", "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "office",         "relay": "13", "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "livingroom",     "relay": "12", "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "bedroom",        "relay": "16", "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "kitchen",        "relay": "18", "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "no man's land",  "relay": "22", "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "hallway",                       "temperature": [{"daikin": {"host": "10.10.31.61"}}]}
+        { "name": "small bathroom", "relay": {"pin": "15"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
+        { "name": "bathroom",       "relay": {"pin": "11"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
+        { "name": "office",         "relay": {"pin": "13"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
+        { "name": "livingroom",     "relay": {"pin": "12"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
+        { "name": "bedroom",        "relay": {"pin": "16"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
+        { "name": "kitchen",        "relay": {"pin": "18"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
+        { "name": "no man's land",  "relay": {"pin": "22"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
+        { "name": "hallway",                                "temperature": [{"daikin": {"host": "10.10.31.61"}}]}
     ]
 }
