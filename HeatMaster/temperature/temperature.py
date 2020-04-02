@@ -1,9 +1,8 @@
-class Temperature:
-    def __init__(self, callback):
-        self.setCallback(callback)
+from tigger.trigger import Trigger
 
-    def get():
-        raise NotImplementedError
+class Temperature(Trigger):
+    def __init__(self):
+        pass
 
-    def setCallback(self, callback):
-        self.callback_ = callback
+    def get(self):
+        return self.temperature_
