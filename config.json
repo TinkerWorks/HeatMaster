@@ -3,6 +3,12 @@
         "host": "mqtt.tinker.haus",
         "port": "1883"
     },
+    "heater": {
+        "mqtt" : {
+            "currentTopic" : "heater/current",
+            "setTopic"     : "heater/set"
+        }
+    },
     "thermostates": [
         { "name": "small bathroom", "relay": {"pin": "15"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
         { "name": "bathroom",       "relay": {"pin": "11"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
