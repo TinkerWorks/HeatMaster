@@ -1,3 +1,5 @@
+import logging
+
 class Trigger:
     def __init__(self):
         pass
@@ -10,13 +12,13 @@ class Trigger:
             try:
                 child.setCallback(callback)
             except AttributeError as e:
-                print ("Child ", child, " has no callback")
+                self.logger.info ("Child {} has no callback".format(child))
 
     def propagate(self, chain, arg):
         if(chain is None):
             chain = []
 
-        print("Propagate from chain ", chain)
+        self.logger.info("Propagate from chain {}".format(chain))
 
         if (self.callback_):
             chain.append(self)
