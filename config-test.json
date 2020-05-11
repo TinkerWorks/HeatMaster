@@ -1,0 +1,15 @@
+{
+    "mqtt": {
+        "host": "mqtt.tinker.haus",
+        "port": "1883"
+    },
+    "heater": {
+        "mqtt" : {
+            "currentTopic" : "heater/current",
+            "setTopic"     : "heater/set"
+        }
+    },
+    "thermostates": [
+        { "name": "hallway",                                "temperature": [{"daikin": {"host": "10.10.222.2", "pollrate": "1"}}]}
+    ]
+}
