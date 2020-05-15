@@ -16,10 +16,15 @@ pipeline {
                 PYTHONPATH = "${env.WORKSPACE}/HeatMaster/test/mock"
             }
             steps {
-                echo 'Testing..'
-                withEnv(["PYTHONPATH=${env.WORKSPACE}/HeatMaster/test/mock"]) {
+                ansiColor('xterm') {
+                    echo 'Testing..'
                     sh "env"
                     sh "~/.local/bin/nosetests  HeatMaster --with-xunit"
+                }
+            }
+            post {
+                always {
+                    junit 'nosetests.xml'
                 }
             }
         }
