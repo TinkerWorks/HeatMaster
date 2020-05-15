@@ -1,0 +1,15 @@
+{
+    "mqtt": {
+        "host": "mqtt.tinker.haus",
+        "port": "1883"
+    },
+    "heater": {
+        "mqtt" : {
+            "currentTopic" : "heater/current",
+            "setTopic"     : "heater/set"
+        }
+    },
+    "thermostates": [
+        { "name": "testroom",     "relay": {"pin": "12"}, "temperature": [{"mqtt":   {"topic": "testtopic/temperature/current"}}]}
+    ]
+}
