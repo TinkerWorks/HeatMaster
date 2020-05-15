@@ -12,9 +12,15 @@ pipeline {
             }
         }
         stage('UnitTest') {
+            environment {
+                PYTHONPATH = "${env.WORKSPACE}/HeatMaster/test/mock"
+            }
             steps {
                 echo 'Testing..'
-                sh "~/.local/bin/nosetests  HeatMaster --with-xunit"
+                withEnv(["PYTHONPATH=${env.WORKSPACE}/HeatMaster/test/mock"]) {
+                    sh "env"
+                    sh "~/.local/bin/nosetests  HeatMaster --with-xunit"
+                }
             }
         }
         stage('Deploy') {
