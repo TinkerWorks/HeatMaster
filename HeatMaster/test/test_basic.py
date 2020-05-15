@@ -16,10 +16,13 @@ import utils.ColoredLogger
 
 import unittest
 
-class Whatever(unittest.TestCase):
-    def test_runwhatever(self):
+class BasicTest(unittest.TestCase):
+    def test_BasicTest(self):
         import sys
-        confFile = "./test/config-test-simple.json"
+        import os
+        absFilePath = os.path.abspath(__file__)
+        path, filename = os.path.split(absFilePath)
+        confFile = path + "/config-test-simple.json"
 
         utils.ColoredLogger.setColoredLogger()
 

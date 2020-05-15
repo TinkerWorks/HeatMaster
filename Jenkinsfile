@@ -8,16 +8,13 @@ pipeline {
             steps {
                 echo "... preparing python environment required for project ..."
                 sh "pip3 install -r requirements.txt"
+                sh "pip3 install coverage nose"
             }
         }
-        stage('Build') {
-            steps {
-                echo 'Building not required in python ..'
-            }
-        }
-        stage('Test') {
+        stage('UnitTest') {
             steps {
                 echo 'Testing..'
+                sh "~/.local/bin/nosetests  HeatMaster --with-xunit"
             }
         }
         stage('Deploy') {
