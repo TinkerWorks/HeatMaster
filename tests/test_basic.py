@@ -17,7 +17,7 @@ from heater.heater import Heater
 from tigger.trigger import Trigger
 from threading import Event
 
-from heatmaster import HeatMaster
+from heatmaster.heatmaster import HeatMaster
 
 import time
 import logging

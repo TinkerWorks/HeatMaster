@@ -7,18 +7,14 @@ pipeline {
         stage('... Environment preparation ...') {
             steps {
                 echo "... preparing python environment required for project ..."
-                sh "pip3 install -r requirements.txt"
-                sh "pip3 install -r HeatMaster/test/requirements.txt"
+                sh "make prepare-test"
             }
         }
         stage('UnitTest') {
-            //environment {
-            //    PYTHONPATH = "${env.WORKSPACE}/HeatMaster/test/mock"
-            //}
             steps {
                 ansiColor('xterm') {
                     echo '... Testing ...'
-                    sh "~/.local/bin/nosetests  HeatMaster --with-xunit"
+                    sh "make nosetest"
                 }
             }
             post {

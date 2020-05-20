@@ -1,2 +1,1 @@
-rpi.gpio
 requests
