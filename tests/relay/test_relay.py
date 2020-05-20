@@ -9,8 +9,10 @@ if 'RPi' not in sys.modules.keys():
 if 'RPi.GPIO' not in sys.modules.keys():
     sys.modules['RPi.GPIO'] = Mock()
 
+sys.stderr.write ( " sys.path is {} ".format(sys.path))
+
 import RPi.GPIO as GPIO
-from relay.relay import Relay
+from actuators.relay import Relay
 
 
 class RelayTest(unittest.TestCase):
