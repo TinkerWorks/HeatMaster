@@ -9,8 +9,6 @@ from relay.relay import Relay
 
 from temperature.temperature import MqttTemperature
 
-from
-
 def main():
     li = Initialiser()
     lc = Controller(li.relays)
