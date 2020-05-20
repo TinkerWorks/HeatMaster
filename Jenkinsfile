@@ -4,22 +4,17 @@ pipeline {
     agent any
 
     stages {
-        stage('Environment preparation') {
+        stage('... Environment preparation ...') {
             steps {
                 echo "... preparing python environment required for project ..."
-                sh "pip3 install -r requirements.txt"
-                sh "pip3 install coverage nose"
+                sh "make prepare-test"
             }
         }
         stage('UnitTest') {
-            environment {
-                PYTHONPATH = "${env.WORKSPACE}/HeatMaster/test/mock"
-            }
             steps {
                 ansiColor('xterm') {
-                    echo 'Testing..'
-                    sh "env"
-                    sh "~/.local/bin/nosetests  HeatMaster --with-xunit"
+                    echo '... Testing ...'
+                    sh "make nosetest"
                 }
             }
             post {
