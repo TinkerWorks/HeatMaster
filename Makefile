@@ -1,4 +1,4 @@
-NT=~/.local/bin/nosetests
+NT=nosetests
 
 MAINPACKAGE=heatmaster
 TESTFOLDER=tests
