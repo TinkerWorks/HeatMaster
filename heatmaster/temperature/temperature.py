@@ -1,4 +1,4 @@
-from tigger.trigger import Trigger
+from utils.trigger import Trigger
 
 
 class Temperature(Trigger):

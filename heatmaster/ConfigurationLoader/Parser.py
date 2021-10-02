@@ -1,6 +1,7 @@
 import json
 import sys
 
+
 class Parser:
     def __init__(self, configurationFilename):
         self.loadConfigurationFile(configurationFilename)
@@ -8,13 +9,11 @@ class Parser:
     def loadConfigurationFile(self, configurationFilename):
         with open(configurationFilename) as json_file:
             self.data = json.load(json_file)
-            #print (self.data)
 
     def getConfiguration(self):
         return self.data
 
-
-    def populateThermostates(self, generatorFunction = None):
+    def populateThermostates(self, generatorFunction=None):
         print('')
         print('')
 
@@ -23,7 +22,7 @@ class Parser:
             try:
                 print('Relay: ' + p['relay'])
             except KeyError as e:
-                print ("No key ", e)
+                print("No key ", e)
 
             temperature = p['temperature']
             print('Temperature Type: ' + temperature['type'])
@@ -32,38 +31,36 @@ class Parser:
             elif (temperature['type'] == 'daikin'):
                 print('Temperature Host: ' + temperature['host'])
 
-
             print('')
         print('')
 
-
-
-    def populateMqtt(self, generatorFunction = None):
+    def populateMqtt(self, generatorFunction=None):
         mqttBroker = self.data['mqtt']
         host = mqttBroker['host']
         port = mqttBroker['port']
 
         print('')
         print('')
-        print ("Mqtt server at ", host, " : ", port)
+        print("Mqtt server at ", host, " : ", port)
         print('')
         print('')
 
         if (generatorFunction is not None):
             generatorFunction(host, port)
 
+            
 if __name__ == "__main__":
     confFile = sys.argv[1]
 
-    print (confFile)
+    print(confFile)
 
     ps = Parser(confFile)
 
     def thermostateGenerator():
-        print ("thermostateGenerator")
+        print("thermostateGenerator")
 
     def mqttGenerator(host, port):
-        print ("mqttGenerator")
+        print("mqttGenerator")
 
-    ps.populateMqtt( mqttGenerator )
-    ps.populateThermostates( thermostateGenerator )
+    ps.populateMqtt(mqttGenerator)
+    ps.populateThermostates(thermostateGenerator)

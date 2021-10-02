@@ -1,3 +1,5 @@
+import logging
+logger = logging.getLogger(__name__)
 
 
 class Trigger:
@@ -12,13 +14,13 @@ class Trigger:
             try:
                 child.setCallback(callback)
             except AttributeError:
-                self.logger.info("Child {} has no callback".format(child))
+                logger.info("Child {} has no callback".format(child))
 
     def propagate(self, chain, arg):
         if(chain is None):
             chain = []
 
-        self.logger.info("Propagate from chain {}".format(chain))
+        logger.info("Propagate from chain {}".format(chain))
 
         if (self.callback_ is not None):
             chain.append(self)
