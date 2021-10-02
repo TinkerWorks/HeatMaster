@@ -20,6 +20,6 @@ class Trigger:
 
         self.logger.info("Propagate from chain {}".format(chain))
 
-        if (self.callback_):
+        if (self.callback_ is not None):
             chain.append(self)
             self.callback_(chain, arg)
