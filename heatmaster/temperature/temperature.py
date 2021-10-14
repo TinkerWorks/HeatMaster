@@ -9,5 +9,8 @@ class Temperature(Trigger):
     def value(self):
         return self.temperature_
 
+    def weight(self):
+        return self.weight_
+
     def timeUpdate(self):
         return self.timestamp_

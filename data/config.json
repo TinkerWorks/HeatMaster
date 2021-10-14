@@ -12,10 +12,12 @@
     "thermostates": [
         { "name": "small bathroom",
           "relay": {"pin": "15"},
-          "temperature": []},
+          "temperature": []
+        },
         { "name": "bathroom",
           "relay": {"pin": "11"},
-          "temperature": []},
+          "temperature": []
+        },
         { "name": "office",
           "relay": {"pin": "13"},
           "temperature":
@@ -47,10 +49,16 @@
         },
         { "name": "no man's land",
           "relay": {"pin": "22"},
-          "temperature": []},
+          "temperature": []
+        },
         { "name": "hallway",
-          "temperature": [{"mqtt":   {"topic": "hsh/sensors-hallway/temperature/value"}}]},
-        { "name": "hallway",
-          "temperature": [{"daikin": {"host": "10.10.222.2", "pollrate": "5"}}]}
+          "temperature":
+          [
+              {"mqtt":   {"topic": "hsh/sensors-hallway/temperature/value",
+                          "weight": 1}},
+              {"daikin": {"host": "10.10.222.2", "pollrate": "5",
+                          "weight": 0}}
+          ]
+        }
     ]
 }
