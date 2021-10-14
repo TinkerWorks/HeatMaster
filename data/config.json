@@ -5,8 +5,9 @@
     },
     "heater": {
         "mqtt" : {
-            "currentTopic" : "heater/current",
-            "setTopic"     : "heater/set"
+            "heatingActive" : "ems-esp/heating_active",
+            "tapWaterActive" : "ems-esp/tapwater_active",
+            "burnerPower": "ems-esp/boiler"
         }
     },
     "thermostates": [
@@ -34,6 +35,7 @@
           ]
         },
         { "name": "bedroom",
+          "default_temperature": 25,
           "electrovalve": {"pin": "16", "default": "1"},
           "temperature":
           [
