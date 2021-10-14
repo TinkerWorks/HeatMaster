@@ -10,6 +10,6 @@
         }
     },
     "thermostates": [
-        { "name": "testroom",     "relay": {"pin": "12"}, "temperature": [{"mqtt":   {"topic": "testtopic/temperature/current"}}]}
+        { "name": "testroom",     "electrovalve": {"pin": "12"}, "temperature": [{"mqtt":   {"topic": "testtopic/temperature/current"}}]}
     ]
 }

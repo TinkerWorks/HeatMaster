@@ -11,22 +11,22 @@
     },
     "thermostates": [
         { "name": "small bathroom",
-          "relay": {"pin": "15"},
+          "electrovalve": {"pin": "15"},
           "temperature": []
         },
         { "name": "bathroom",
-          "relay": {"pin": "11"},
+          "electrovalve": {"pin": "11"},
           "temperature": []
         },
         { "name": "office",
-          "relay": {"pin": "13"},
+          "electrovalve": {"pin": "13"},
           "temperature":
           [
               {"mqtt": {"topic": "hsh/sensors-office/temperature/value"}}
           ]
         },
         { "name": "livingroom",
-          "relay": {"pin": "12"},
+          "electrovalve": {"pin": "12"},
           "temperature":
           [
               {"mqtt": {"topic": "hsh/sensors-livingroom-1/temperature/value"}},
@@ -34,21 +34,21 @@
           ]
         },
         { "name": "bedroom",
-          "relay": {"pin": "16"},
+          "electrovalve": {"pin": "16"},
           "temperature":
           [
               {"mqtt":   {"topic": "hsh/sensors-bedroom/temperature/value"}}
           ]
         },
         { "name": "kitchen",
-          "relay": {"pin": "18"},
+          "electrovalve": {"pin": "18"},
           "temperature":
           [
               {"mqtt":   {"topic": "hsh/sensors-kitchen/temperature/value"}}
           ]
         },
         { "name": "no man's land",
-          "relay": {"pin": "22"},
+          "electrovalve": {"pin": "22"},
           "temperature": []
         },
         { "name": "hallway",

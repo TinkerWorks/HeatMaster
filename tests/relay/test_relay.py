@@ -12,22 +12,22 @@ if 'RPi.GPIO' not in sys.modules.keys():
 sys.stderr.write ( " sys.path is {} ".format(sys.path))
 
 import RPi.GPIO as GPIO
-from heatmaster.actuators.relay import Relay
+from heatmaster.actuators.electrovalve import Electrovalve
 
 
-class RelayTest(unittest.TestCase):
+class ElectrovalveTest(unittest.TestCase):
 
     TESTPIN = 67
 
     def test_BadInit(self):
         with self.assertRaises(ValueError):
-            Relay()
+            Electrovalve()
 
     def test_GoodInitPin(self):
         # reset GPIO module import to not interfere between tests
         GPIO.reset_mock()
 
-        rl = Relay(pin = self.TESTPIN)
+        rl = Electrovalve(pin = self.TESTPIN)
 
         print(str(rl))
 
@@ -36,14 +36,14 @@ class RelayTest(unittest.TestCase):
         GPIO.reset_mock()
 
         config = {"pin": self.TESTPIN}
-        rl = Relay(config)
+        rl = Electrovalve(config)
 
         print(str(rl))
 
     def test_SetPin(self):
         # reset GPIO module import to not interfere between tests
         GPIO.reset_mock()
-        rl = Relay(pin = self.TESTPIN)
+        rl = Electrovalve(pin = self.TESTPIN)
         # Test the initial state of the pin to be set
         GPIO.output.assert_called_once_with(self.TESTPIN, 1)
 
