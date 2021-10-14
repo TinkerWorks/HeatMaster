@@ -6,5 +6,8 @@ class Temperature(Trigger):
         Trigger.__init__(self)
         pass
 
-    def get(self):
+    def value(self):
         return self.temperature_
+
+    def timeUpdate(self):
+        return self.timestamp_
