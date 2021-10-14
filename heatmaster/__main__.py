@@ -1,11 +1,11 @@
-from ConfigurationLoader.Parser import Parser
-from heatmaster import HeatMaster
+import sys
+print ("PYTHONPATH is: {}".format(sys.path))
 
-import os
+from heatmaster.ConfigurationLoader.Parser import Parser
+from heatmaster.heatmaster import HeatMaster
 
-absFilePath = os.path.abspath(__file__)
-path, filename = os.path.split(absFilePath)
-confFile = path + "/../data/config.json"
+
+confFile = sys.argv[1]
 
 ps = Parser(confFile)
 hm = HeatMaster(config=ps.getConfiguration())

@@ -12,7 +12,7 @@ if 'RPi.GPIO' not in sys.modules.keys():
 sys.stderr.write ( " sys.path is {} ".format(sys.path))
 
 import RPi.GPIO as GPIO
-from actuators.relay import Relay
+from heatmaster.actuators.relay import Relay
 
 
 class RelayTest(unittest.TestCase):

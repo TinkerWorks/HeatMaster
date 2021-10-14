@@ -1,4 +1,4 @@
-from utils.trigger import Trigger
+from heatmaster.utils.trigger import Trigger
 
 
 class Temperature(Trigger):

@@ -1,4 +1,4 @@
-import logging
+from heatmaster.utils import logging
 logger = logging.getLogger(__name__)
 
 
@@ -20,7 +20,8 @@ class Trigger:
         if(chain is None):
             chain = []
 
-        logger.info("Propagate from chain {}".format(chain))
+        logger.spam("In object \"{}\" -> propagate from top chain {}".
+                    format(self, chain))
 
         if (self.callback_ is not None):
             chain.append(self)

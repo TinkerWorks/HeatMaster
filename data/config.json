@@ -10,14 +10,14 @@
         }
     },
     "thermostates": [
-        { "name": "small bathroom", "relay": {"pin": "15"}, "temperature": [{"mqtt":   {"topic": "hsh/sensors-small-bathroom/temperature/value"}}]},
-        { "name": "bathroom",       "relay": {"pin": "11"}, "temperature": [{"mqtt":   {"topic": "hsh/sensors-bathroom/temperature/value"}}]},
+        { "name": "small bathroom", "relay": {"pin": "15"}, "temperature": []},
+        { "name": "bathroom",       "relay": {"pin": "11"}, "temperature": []},
         { "name": "office",         "relay": {"pin": "13"}, "temperature": [{"mqtt":   {"topic": "hsh/sensors-office/temperature/value"}}]},
         { "name": "livingroom",     "relay": {"pin": "12"}, "temperature": [{"mqtt":   {"topic": "hsh/sensors-livingroom-1/temperature/value"}},
                                                                             {"mqtt":   {"topic": "hsh/sensors-livingroom-2/temperature/value"}}]},
         { "name": "bedroom",        "relay": {"pin": "16"}, "temperature": [{"mqtt":   {"topic": "hsh/sensors-bedroom/temperature/value"}}]},
         { "name": "kitchen",        "relay": {"pin": "18"}, "temperature": [{"mqtt":   {"topic": "hsh/sensors-kitchen/temperature/value"}}]},
-        { "name": "no man's land",  "relay": {"pin": "22"}, "temperature": [{"mqtt":   {"topic": "hsh/sensors-nomansland/temperature/value"}}]},
+        { "name": "no man's land",  "relay": {"pin": "22"}, "temperature": []},
         { "name": "hallway",                                "temperature": [{"mqtt":   {"topic": "hsh/sensors-hallway/temperature/value"}}]},
         { "name": "hallway",                                "temperature": [{"daikin": {"host": "10.10.222.2", "pollrate": "5"}}]}
     ]
