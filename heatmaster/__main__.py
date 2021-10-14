@@ -9,4 +9,4 @@ confFile = sys.argv[1]
 
 ps = Parser(confFile)
 hm = HeatMaster(config=ps.getConfiguration())
-hm.run(5)
+hm.run()
