@@ -5,6 +5,7 @@
     },
     "heater": {
         "mqtt" : {
+            "boiler_data" : "ems-esp/boiler_data",
             "heatingActive" : "ems-esp/heating_active",
             "tapWaterActive" : "ems-esp/tapwater_active",
             "burnerPower": "ems-esp/boiler"
