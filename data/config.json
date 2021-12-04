@@ -31,8 +31,8 @@
           "electrovalve": {"pin": "12", "default": "1"},
           "temperature":
           [
-              {"mqtt": {"topic": "hsh/sensors-livingroom-1/temperature/value"}},
-              {"mqtt": {"topic": "hsh/sensors-livingroom-2/temperature/value"}}
+              {"mqtt": {"topic": "hsh/sensors-livingroom-balcony/temperature/value"}},
+              {"mqtt": {"topic": "hsh/sensors-livingroom/temperature/value"}}
           ]
         },
         { "name": "bedroom",
