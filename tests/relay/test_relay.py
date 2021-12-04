@@ -1,21 +1,10 @@
 #!/usr/bin/env python3
+import setuptest
 import unittest
-import sys
-
-#TODO: This is a way, but overriding __import__ might be better
-from mock import Mock,MagicMock
-if 'RPi' not in sys.modules.keys():
-    sys.modules['RPi'] = Mock()
-if 'RPi.GPIO' not in sys.modules.keys():
-    sys.modules['RPi.GPIO'] = Mock()
-
-sys.stderr.write ( " sys.path is {} ".format(sys.path))
-
 import RPi.GPIO as GPIO
 from heatmaster.actuators.electrovalve import Electrovalve
+assert setuptest
 
-Electrovalve.OPEN_TIME_SECONDS  = 1
-Electrovalve.CLOSE_TIME_SECONDS = 2
 
 class ElectrovalveTest(unittest.TestCase):
 
@@ -29,7 +18,7 @@ class ElectrovalveTest(unittest.TestCase):
         # reset GPIO module import to not interfere between tests
         GPIO.reset_mock()
 
-        rl = Electrovalve(pin = self.TESTPIN)
+        rl = Electrovalve(pin=self.TESTPIN)
 
         print(str(rl))
 
