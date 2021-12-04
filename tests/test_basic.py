@@ -18,6 +18,8 @@ from heatmaster.utils.trigger import Trigger
 from heatmaster.heatmaster import HeatMaster
 from heatmaster.utils import logging
 
+from heatmaster.actuators.electrovalve import Electrovalve
+
 from threading import Event
 import time
 import logging
@@ -25,6 +27,9 @@ import unittest
 import threading
 
 import paho.mqtt.client as mqtt
+
+Electrovalve.OPEN_TIME_SECONDS  = 1
+Electrovalve.CLOSE_TIME_SECONDS = 2
 
 class BasicTest(unittest.TestCase):
     def test_BasicTest(self):

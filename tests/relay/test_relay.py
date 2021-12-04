@@ -14,6 +14,8 @@ sys.stderr.write ( " sys.path is {} ".format(sys.path))
 import RPi.GPIO as GPIO
 from heatmaster.actuators.electrovalve import Electrovalve
 
+Electrovalve.OPEN_TIME_SECONDS  = 1
+Electrovalve.CLOSE_TIME_SECONDS = 2
 
 class ElectrovalveTest(unittest.TestCase):
 
