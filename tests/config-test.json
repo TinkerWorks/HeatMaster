@@ -10,6 +10,6 @@
         }
     },
     "thermostates": [
-        { "name": "hallway",                                "temperature": [{"daikin": {"host": "10.10.222.2", "pollrate": "1"}}]}
+        { "name": "hallway",                                "temperature": [{"daikin": {"host": "daikin", "pollrate": "1"}}]}
     ]
 }

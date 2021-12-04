@@ -5,11 +5,13 @@
     },
     "heater": {
         "mqtt" : {
-            "currentTopic" : "heater/current",
-            "setTopic"     : "heater/set"
+            "boiler_data" : "eeems-esp/boiler_data",
+            "heatingActive" : "eeems-esp/heating_active",
+            "tapWaterActive" : "eeems-esp/tapwater_active",
+            "burnerPower": "eeems-esp/boiler"
         }
     },
     "thermostates": [
-        { "name": "hallway",                                "temperature": [{"daikin": {"host": "10.10.222.2", "pollrate": "1"}}]}
+        { "name": "hallway",                                "temperature": [{"daikin": {"host": "daikin", "pollrate": "1"}}]}
     ]
 }

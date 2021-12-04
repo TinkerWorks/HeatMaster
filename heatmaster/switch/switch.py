@@ -1,5 +1,6 @@
 import RPi.GPIO as GPIO
 
+
 class Switch:
     def __init__(self, pin, led_pin):
         self.pin_ = pin
@@ -21,4 +22,4 @@ class Switch:
 
         GPIO.output(self.led_pin_, self.state_)
 
-        print ("Switch is ", self.state_)
+        print("Switch is ", self.state_)

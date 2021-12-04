@@ -40,7 +40,7 @@ spec:
             }
             post {
                 always {
-                    junit 'nosetests.xml'
+                    junit 'nose2-junit.xml'
                 }
             }
         }

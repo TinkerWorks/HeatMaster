@@ -1,2 +1,6 @@
 paho-mqtt
 requests
+coloredlogs
+verboselogs
+termcolor
+ratelimit

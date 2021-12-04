@@ -5,18 +5,63 @@
     },
     "heater": {
         "mqtt" : {
-            "currentTopic" : "heater/current",
-            "setTopic"     : "heater/set"
+            "boiler_data" : "ems-esp/boiler_data",
+            "heatingActive" : "ems-esp/heating_active",
+            "tapWaterActive" : "ems-esp/tapwater_active",
+            "burnerPower": "ems-esp/boiler"
         }
     },
     "thermostates": [
-        { "name": "small bathroom", "relay": {"pin": "15"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "bathroom",       "relay": {"pin": "11"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "office",         "relay": {"pin": "13"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "livingroom",     "relay": {"pin": "12"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "bedroom",        "relay": {"pin": "16"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "kitchen",        "relay": {"pin": "18"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "no man's land",  "relay": {"pin": "22"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "hallway",                                "temperature": [{"daikin": {"host": "10.10.222.2", "pollrate": "5"}}]}
+        { "name": "small bathroom",
+          "electrovalve": {"pin": "15", "default": "1"},
+          "temperature": []
+        },
+        { "name": "bathroom",
+          "electrovalve": {"pin": "11", "default": "1"},
+          "temperature": []
+        },
+        { "name": "office",
+          "electrovalve": {"pin": "13", "default": "1"},
+          "temperature":
+          [
+              {"mqtt": {"topic": "hsh/sensors-office/temperature/value"}}
+          ]
+        },
+        { "name": "livingroom",
+          "electrovalve": {"pin": "12", "default": "1"},
+          "temperature":
+          [
+              {"mqtt": {"topic": "hsh/sensors-livingroom-balcony/temperature/value"}},
+              {"mqtt": {"topic": "hsh/sensors-livingroom/temperature/value"}}
+          ]
+        },
+        { "name": "bedroom",
+          "default_temperature": 25,
+          "electrovalve": {"pin": "16", "default": "1"},
+          "temperature":
+          [
+              {"mqtt":   {"topic": "hsh/sensors-bedroom/temperature/value"}}
+          ]
+        },
+        { "name": "kitchen",
+          "electrovalve": {"pin": "18", "default": "1"},
+          "temperature":
+          [
+              {"mqtt":   {"topic": "hsh/sensors-kitchen/temperature/value"}}
+          ]
+        },
+        { "name": "no man's land",
+          "electrovalve": {"pin": "22", "default": "0"},
+          "temperature": []
+        },
+        { "name": "hallway",
+          "temperature":
+          [
+              {"mqtt":   {"topic": "hsh/sensors-hallway/temperature/value",
+                          "weight": 1}},
+              {"daikin": {"host": "daikin", "pollrate": "5",
+                          "weight": 0}}
+          ]
+        }
     ]
 }

@@ -5,11 +5,63 @@
     },
     "heater": {
         "mqtt" : {
-            "currentTopic" : "heater/current",
-            "setTopic"     : "heater/set"
+            "boiler_data" : "eeems-esp/boiler_data",
+            "heatingActive" : "eeems-esp/heating_active",
+            "tapWaterActive" : "eeems-esp/tapwater_active",
+            "burnerPower": "eeems-esp/boiler"
         }
     },
     "thermostates": [
-        { "name": "testroom",     "relay": {"pin": "12"}, "temperature": [{"mqtt":   {"topic": "testtopic/temperature/current"}}]}
+        { "name": "small bathroom",
+          "electrovalve": {"pin": "15", "default": "1"},
+          "temperature": []
+        },
+        { "name": "bathroom",
+          "electrovalve": {"pin": "11", "default": "1"},
+          "temperature": []
+        },
+        { "name": "office",
+          "electrovalve": {"pin": "13", "default": "1"},
+          "temperature":
+          [
+              {"mqtt": {"topic": "hsh/sensors-office/temperature/value"}}
+          ]
+        },
+        { "name": "livingroom",
+          "electrovalve": {"pin": "12", "default": "1"},
+          "temperature":
+          [
+              {"mqtt": {"topic": "hsh/sensors-livingroom/temperature/value"}},
+              {"mqtt": {"topic": "hsh/sensors-livingroom-balcony/temperature/value"}}
+          ]
+        },
+        { "name": "bedroom",
+          "default_temperature": 25,
+          "electrovalve": {"pin": "16", "default": "1"},
+          "temperature":
+          [
+              {"mqtt":   {"topic": "hsh/sensors-bedroom/temperature/value"}}
+          ]
+        },
+        { "name": "kitchen",
+          "electrovalve": {"pin": "18", "default": "1"},
+          "temperature":
+          [
+              {"mqtt":   {"topic": "hsh/sensors-kitchen/temperature/value"}}
+          ]
+        },
+        { "name": "no man's land",
+          "electrovalve": {"pin": "22", "default": "0"},
+          "temperature": []
+        },
+        { "name": "hallway",
+          "temperature":
+          [
+              {"mqtt":   {"topic": "hsh/sensors-hallway/temperature/value",
+                          "weight": 1}},
+              {"daikin": {"host": "daikin", "pollrate": "5",
+                          "weight": 0}}
+          ]
+        }
     ]
 }

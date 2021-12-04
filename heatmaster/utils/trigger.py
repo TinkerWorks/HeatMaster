@@ -1,8 +1,10 @@
-import logging
+from heatmaster.utils import logging
+logger = logging.getLogger(__name__)
+
 
 class Trigger:
     def __init__(self):
-        pass
+        self.callback_ = None
 
     def setCallback(self, callback):
         self.callback_ = callback
@@ -11,15 +13,16 @@ class Trigger:
         for child in children:
             try:
                 child.setCallback(callback)
-            except AttributeError as e:
-                self.logger.info ("Child {} has no callback".format(child))
+            except AttributeError:
+                logger.info("Child {} has no callback".format(child))
 
     def propagate(self, chain, arg):
         if(chain is None):
             chain = []
 
-        self.logger.info("Propagate from chain {}".format(chain))
+        logger.spam("In object \"{}\" -> propagate from top chain {}".
+                    format(self, chain))
 
-        if (self.callback_):
+        if (self.callback_ is not None):
             chain.append(self)
             self.callback_(chain, arg)

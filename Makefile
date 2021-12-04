@@ -1,10 +1,9 @@
-NT=nosetests
+NT=nose2
 
 MAINPACKAGE=heatmaster
 TESTFOLDER=tests
 
-NOSEOPTIONS= --with-coverage --cover-html --with-xunit --cover-package=$(MAINPACKAGE)
-NOSEOPTIONS+= --cover-inclusive
+NOSEOPTIONS= --with-coverage --junit-xml
 prepare:
 	pip3 install --user -r requirements.txt
 prepare-test: prepare

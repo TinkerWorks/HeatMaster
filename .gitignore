@@ -200,3 +200,5 @@ tags
 
 # HTML cover report
 cover
+stats.dat
+nose2-junit.xml

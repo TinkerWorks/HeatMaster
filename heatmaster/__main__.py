@@ -1,36 +1,12 @@
-import time
-import RPi.GPIO as GPIO
+import sys
+print ("PYTHONPATH is: {}".format(sys.path))
 
-from relay.initializer import Initialiser
-from relay.controller import Controller
-
-from switch.switch import Switch
-from relay.relay import Relay
-
-from temperature.temperature import MqttTemperature
-
-def main():
-    li = Initialiser()
-    lc = Controller(li.relays)
+from heatmaster.ConfigurationLoader.Parser import Parser
+from heatmaster.heatmaster import HeatMaster
 
 
-    sw = Switch(31, 29)
-    rls = []
+confFile = sys.argv[1]
 
-    mqtemp = MqttTemperature("raspberry-sensor-dev/temperature/current")
-
-    for rpin in li.relays:
-        print("Setting up relay %d" % rpin)
-        rl = Relay(rpin)
-        rls.append(rl)
-
-
-    while(True):
-        print( "Turn it all ON !!! \n")
-        for relay in rls:
-            relay.on()
-
-        time.sleep(1)
-
-if __name__ == "__main__":
-    main()
+ps = Parser(confFile)
+hm = HeatMaster(config=ps.getConfiguration())
+hm.run()
