@@ -43,7 +43,7 @@ class ElectrovalveTest(unittest.TestCase):
     def test_SetPin(self):
         # reset GPIO module import to not interfere between tests
         GPIO.reset_mock()
-        rl = Electrovalve(pin = self.TESTPIN)
+        rl = Electrovalve(pin=self.TESTPIN)
         # Test the initial state of the pin to be set
         GPIO.output.assert_called_once_with(self.TESTPIN, 1)
 
@@ -54,11 +54,3 @@ class ElectrovalveTest(unittest.TestCase):
         GPIO.reset_mock()
         rl.set(1)
         GPIO.output.assert_called_once_with(self.TESTPIN, 1)
-
-        GPIO.reset_mock()
-        rl.on()
-        GPIO.output.assert_called_once_with(self.TESTPIN, 1)
-
-        GPIO.reset_mock()
-        rl.off()
-        GPIO.output.assert_called_once_with(self.TESTPIN, 0)
