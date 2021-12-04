@@ -40,7 +40,7 @@ class BasicTest(unittest.TestCase):
         ps = Parser(confFile)
         hm = HeatMaster(config = ps.getConfiguration())
         self.startPublishing()
-        hm.run(5)
+        hm.run(10)
         self.stopPublishing()
 
     def connect_mqtt(self):
