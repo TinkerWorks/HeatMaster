@@ -17,6 +17,6 @@
         { "name": "bedroom",        "relay": {"pin": "16"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
         { "name": "kitchen",        "relay": {"pin": "18"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
         { "name": "no man's land",  "relay": {"pin": "22"}, "temperature": [{"mqtt":   {"topic": "raspberry-sensor-dev/temperature/current"}}]},
-        { "name": "hallway",                                "temperature": [{"daikin": {"host": "10.10.222.2", "pollrate": "5"}}]}
+        { "name": "hallway",                                "temperature": [{"daikin": {"host": "daikin", "pollrate": "5"}}]}
     ]
 }

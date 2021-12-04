@@ -59,7 +59,7 @@
           [
               {"mqtt":   {"topic": "hsh/sensors-hallway/temperature/value",
                           "weight": 1}},
-              {"daikin": {"host": "10.10.222.2", "pollrate": "5",
+              {"daikin": {"host": "daikin", "pollrate": "5",
                           "weight": 0}}
           ]
         }
