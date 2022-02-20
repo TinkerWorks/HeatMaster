@@ -52,7 +52,10 @@
         },
         { "name": "no man's land",
           "electrovalve": {"pin": "22", "default": "0"},
-          "temperature": []
+          "temperature": 
+         [
+             {"mqtt":   {"topic": "hsh/sensors-nomansland/temperature/value"}}
+         ]
         },
         { "name": "hallway",
           "temperature":
