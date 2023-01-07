@@ -10,13 +10,16 @@ case "$1" in
         ssh -t ${HOST} pip3 install --user -r /home/$USER/HeatMaster/tests/requirements.txt
         ;;
     "main")
-        ssh -t ${HOST} "cd HeatMaster ; python3 -m heatmaster heatmaster/data/config.json"
+        ssh -t ${HOST} "cd HeatMaster ; python3 -m heatmaster"
         ;;
     "test")
         ssh -t "${HOST}" "cd HeatMaster ; nose2-3 "
         ;;
     "copy")
         echo "Just copy and done"
+        ;;
+    "install")
+        ssh -t ${HOST} "cd HeatMaster ; python3 -m pip install --upgrade --user --verbose ."
         ;;
     *)
         exit 4
