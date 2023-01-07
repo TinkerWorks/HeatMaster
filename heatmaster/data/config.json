@@ -13,15 +13,15 @@
     },
     "thermostates": [
         { "name": "small bathroom",
-          "electrovalve": {"pin": "15", "default": "1"},
+          "electrovalve": {"pin": "18", "default": "1"},
           "temperature": []
         },
         { "name": "bathroom",
-          "electrovalve": {"pin": "11", "default": "1"},
+          "electrovalve": {"pin": "13", "default": "1"},
           "temperature": []
         },
         { "name": "office",
-          "electrovalve": {"pin": "13", "default": "1"},
+          "electrovalve": {"pin": "11", "default": "1"},
           "temperature":
           [
               {"mqtt": {"topic": "hsh/sensors-office/temperature/value"}}
@@ -44,7 +44,7 @@
           ]
         },
         { "name": "kitchen",
-          "electrovalve": {"pin": "18", "default": "1"},
+          "electrovalve": {"pin": "15", "default": "0"},
           "temperature":
           [
               {"mqtt":   {"topic": "hsh/sensors-kitchen/temperature/value"}}
@@ -52,7 +52,7 @@
         },
         { "name": "no man's land",
           "electrovalve": {"pin": "22", "default": "0"},
-          "temperature": 
+          "temperature":
          [
              {"mqtt":   {"topic": "hsh/sensors-nomansland/temperature/value"}}
          ]
