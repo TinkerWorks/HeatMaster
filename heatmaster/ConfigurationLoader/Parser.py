@@ -48,7 +48,7 @@ class Parser:
         if (generatorFunction is not None):
             generatorFunction(host, port)
 
-            
+
 if __name__ == "__main__":
     confFile = sys.argv[1]
 

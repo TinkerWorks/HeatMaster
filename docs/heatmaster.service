@@ -1,0 +1,12 @@
+[Unit]
+Description=Raspberry Heating Manager
+After=multi-user.target
+
+[Service]
+Environment="COLOREDLOGS_LOG_LEVEL=WARNING"
+ExecStart=/usr/bin/python3 -m heatmaster
+Restart=always
+User=heatmaster
+
+[Install]
+WantedBy=multi-user.target

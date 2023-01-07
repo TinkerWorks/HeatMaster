@@ -17,7 +17,7 @@ class Trigger:
                 logger.info("Child {} has no callback".format(child))
 
     def propagate(self, chain, arg):
-        if(chain is None):
+        if (chain is None):
             chain = []
 
         logger.spam("In object \"{}\" -> propagate from top chain {}".
