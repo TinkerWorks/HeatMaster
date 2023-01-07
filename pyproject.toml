@@ -1,0 +1,25 @@
+[project]
+name = "HeatMaster"
+version = "0.5.0"
+description = "Handle distributed heating in multiple rooms"
+authors = [
+    { name = "Alexandru-Sever Horin", email = "alex.sever.h@gmail.com" }
+]
+dependencies = [
+             "paho-mqtt",
+             "requests",
+             "coloredlogs",
+             "verboselogs",
+             "termcolor",
+             "ratelimit"
+]
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 99
+
+[project.scripts]
+heatmaster = "heatmaster.heatmaster:main"
