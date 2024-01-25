@@ -14,11 +14,15 @@
     "thermostates": [
         { "name": "small bathroom",
           "electrovalve": {"pin": "18", "default": "1"},
-          "temperature": []
+          "temperature": [
+              {"mqtt": {"topic": "zigbee2mqtt/TH Small Bathroom", "field": "temperature"}}
+          ]
         },
         { "name": "bathroom",
           "electrovalve": {"pin": "13", "default": "1"},
-          "temperature": []
+          "temperature": [
+              {"mqtt": {"topic": "zigbee2mqtt/TH Bathroom", "field": "temperature"}}
+          ]
         },
         { "name": "office",
           "electrovalve": {"pin": "11", "default": "1"},
@@ -42,7 +46,8 @@
           "electrovalve": {"pin": "16", "default": "1"},
           "temperature":
           [
-              {"mqtt":   {"topic": "sensors-bedroom/temperature/value"}}
+              {"mqtt":   {"topic": "sensors-bedroom/temperature/value"}},
+              {"mqtt": {"topic": "zigbee2mqtt/TH Bedroom", "field": "temperature"}}
           ]
         },
         { "name": "kitchen",
