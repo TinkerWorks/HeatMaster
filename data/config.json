@@ -24,7 +24,8 @@
           "electrovalve": {"pin": "11", "default": "1"},
           "temperature":
           [
-              {"mqtt": {"topic": "sensors-office/temperature/value"}}
+              {"mqtt": {"topic": "sensors-office/temperature/value"}},
+              {"mqtt": {"topic": "zigbee2mqtt/TH Office", "field": "temperature"}}
           ]
         },
         { "name": "livingroom",
@@ -32,7 +33,8 @@
           "temperature":
           [
               {"mqtt": {"topic": "sensors-livingroom-balcony/temperature/value"}},
-              {"mqtt": {"topic": "sensors-livingroom/temperature/value"}}
+              {"mqtt": {"topic": "sensors-livingroom/temperature/value"}},
+              {"mqtt": {"topic": "zigbee2mqtt/TH Livingroom", "field": "temperature"}}
           ]
         },
         { "name": "bedroom",
@@ -54,7 +56,8 @@
           "electrovalve": {"pin": "22", "default": "0"},
           "temperature": 
          [
-             {"mqtt":   {"topic": "sensors-nomansland/temperature/value"}}
+             {"mqtt":   {"topic": "sensors-nomansland/temperature/value"}},
+             {"mqtt": {"topic": "zigbee2mqtt/TH No Man's Land", "field": "temperature"}}
          ]
         },
         { "name": "hallway",
